@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Water
+  - ChatWindow
+  - GameUI
   layers:
   - Default
   - TransparentFX
@@ -37,7 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Invisible
   m_SortingLayers:
   - name: Default
     uniqueID: 0

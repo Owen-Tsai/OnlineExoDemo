@@ -3,29 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using HFPS.Systems;
 
+/**
+ * When player enters the trigger, prompt user with following actions:
+ * - Press E, to check the full list of jobs;
+ * - Press F, to open specific URL in browser;
+ */
 public class CompanyTrigger : MonoBehaviour
 {
 
-    public GameObject hintPanel;
+    [SerializeField] GameObject actionHintPanel;
+    [SerializeField] GameObject jobListPanel;
+    [SerializeField] string url;
     private bool isInTrigger;
-    public string hintText;
-    public string url;
-    // Start is called before the first frame update
+    private HFPS_GameManager gameManager;
+
     void Start()
     {
         isInTrigger = false;
+        gameManager = GameObject.FindGameObjectWithTag("GameUI").GetComponent<HFPS_GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isInTrigger)
+        if (!isInTrigger) return;
+        if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            if (Keyboard.current.eKey.wasPressedThisFrame)
-            {
-                Application.OpenURL(url);
-            }
+            Application.OpenURL(url);
+        }
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            ShowJobListPabel();
         }
     }
 
@@ -33,8 +43,7 @@ public class CompanyTrigger : MonoBehaviour
     {
         if (other.GetComponent<Collider>().tag == "Player")
         {
-            hintPanel.SetActive(true);
-            hintPanel.GetComponentInChildren<Text>().text = hintText != "" ? hintText : "按 E 键从浏览器查看详情";
+            actionHintPanel.SetActive(true);
             isInTrigger = true;
         }
     }
@@ -43,8 +52,26 @@ public class CompanyTrigger : MonoBehaviour
     {
         if (other.GetComponent<Collider>().tag == "Player")
         {
-            hintPanel.SetActive(false);
+            actionHintPanel.SetActive(false);
             isInTrigger = false;
         }
+    }
+
+    public void ShowJobListPabel()
+    {
+        jobListPanel.SetActive(true);
+        actionHintPanel.SetActive(false);
+        gameManager.LockPlayerControls(true, true, true, 2, true, true);
+    }
+
+    public void HideJobListPanel()
+    {
+        jobListPanel.SetActive(false);
+        if (isInTrigger)
+        {
+            actionHintPanel.SetActive(true);
+        }
+        gameManager.LockPlayerControls(false, false, false, 0, false, true);
+        gameManager.Unpause();
     }
 }
