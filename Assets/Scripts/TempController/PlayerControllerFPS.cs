@@ -6,16 +6,11 @@ using Mirror;
 
 public class PlayerControllerFPS : NetworkBehaviour
 {
-    public CharacterController controller;
     public float speedFactor = 0.05f;
     public float mouseEnsitivity = 0.08f;
     public Transform _camera;
 
     private float xRotation = 0f;
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
-    }
 
     public override void OnStartAuthority()
     {
@@ -53,7 +48,8 @@ public class PlayerControllerFPS : NetworkBehaviour
         }
 
         Vector3 movement = transform.right * x + transform.forward * z;
-        controller.Move(speedFactor * Time.deltaTime * movement);
+        // controller.Move(speedFactor * Time.deltaTime * movement);
+        transform.position += movement * speedFactor * Time.deltaTime;
     }
 
     private void Look()
