@@ -1,0 +1,34 @@
+{
+    "name": "TempAssets",
+    "maps": [
+        {
+            "name": "PlayerCustom",
+            "id": "033b9117-fab5-4ab1-b2bd-5a70f95b9eb2",
+            "actions": [
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "f66858b3-d681-4bab-9cc3-0dfba9a60e45",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9cce24dd-f0b1-4c20-97fe-96ed61254414",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "ScaleVector2(x=0.5,y=0.5),ScaleVector2(x=0.1,y=0.1)",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
