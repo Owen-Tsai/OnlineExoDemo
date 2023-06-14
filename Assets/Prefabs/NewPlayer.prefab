@@ -111,9 +111,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: HEROPLAYER
       objectReference: {fileID: 0}
+    - target: {fileID: 664134650273654407, guid: 9f256dcdfd91e854ab8e4a9f62248d1e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5819588669122478685, guid: 9f256dcdfd91e854ab8e4a9f62248d1e, type: 3}
       propertyPath: sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281523187794142183, guid: 9f256dcdfd91e854ab8e4a9f62248d1e, type: 3}
+      propertyPath: _assetId
+      value: 479259344
       objectReference: {fileID: 0}
     - target: {fileID: 7585782160029299613, guid: 9f256dcdfd91e854ab8e4a9f62248d1e, type: 3}
       propertyPath: InvisibleLayer
