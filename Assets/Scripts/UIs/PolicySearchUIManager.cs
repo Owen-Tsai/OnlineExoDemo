@@ -36,6 +36,10 @@ public class PolicySearchUIManager : MonoBehaviour
     [SerializeField] string page;
 
     public GameObject[] goalOptions;
+    public GameObject[] nationalityOptions;
+    public GameObject[] educationOptions;
+    public GameObject[] typeOptions;
+    public GameObject[] titleOptions;
 
     private int selectedGoal = 0;
     private int selectedNationality = 0;
@@ -116,10 +120,89 @@ public class PolicySearchUIManager : MonoBehaviour
             }
         }
     }
-    public void OnNationalityChange(string val)
+    public void OnNationalityChange(string str)
     {
-        nationality = val;
+        string[] _params = str.Split(",");
+        selectedGoal = int.Parse(_params[0]);
+        nationality = _params[1];
         StartCoroutine(FetchList());
+
+        for (int i = 0; i < nationalityOptions.Length; i++)
+        {
+            if (i == selectedGoal)
+            {
+                // set active style
+                SetActiveStyle(nationalityOptions[i]);
+            }
+            else
+            {
+                // set inactive style
+                SetInactiveStyle(nationalityOptions[i]);
+            }
+        }
+    }
+    public void OnEducationChange(string str)
+    {
+        string[] _params = str.Split(",");
+        selectedGoal = int.Parse(_params[0]);
+        nationality = _params[1];
+        StartCoroutine(FetchList());
+
+        for (int i = 0; i < educationOptions.Length; i++)
+        {
+            if (i == selectedGoal)
+            {
+                // set active style
+                SetActiveStyle(educationOptions[i]);
+            }
+            else
+            {
+                // set inactive style
+                SetInactiveStyle(educationOptions[i]);
+            }
+        }
+    }
+    public void OnTypesChange(string str)
+    {
+        string[] _params = str.Split(",");
+        selectedGoal = int.Parse(_params[0]);
+        nationality = _params[1];
+        StartCoroutine(FetchList());
+
+        for (int i = 0; i < typeOptions.Length; i++)
+        {
+            if (i == selectedGoal)
+            {
+                // set active style
+                SetActiveStyle(typeOptions[i]);
+            }
+            else
+            {
+                // set inactive style
+                SetInactiveStyle(typeOptions[i]);
+            }
+        }
+    }
+    public void OnTitlesChange(string str)
+    {
+        string[] _params = str.Split(",");
+        selectedGoal = int.Parse(_params[0]);
+        nationality = _params[1];
+        StartCoroutine(FetchList());
+
+        for (int i = 0; i < titleOptions.Length; i++)
+        {
+            if (i == selectedGoal)
+            {
+                // set active style
+                SetActiveStyle(titleOptions[i]);
+            }
+            else
+            {
+                // set inactive style
+                SetInactiveStyle(titleOptions[i]);
+            }
+        }
     }
     public void OnAgeChange(string val)
     {
