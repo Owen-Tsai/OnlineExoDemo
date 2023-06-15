@@ -44,7 +44,7 @@ public class ConferenceUIManager : MonoBehaviour
             var item = data.list[i];
             GameObject obj = Instantiate(itemPrefab, panel.transform);
             // Debug.Log(obj.transform.Find("Title"));
-            obj.transform.Find("Title").GetComponent<TMPro.TMP_Text>().text = item.name;
+            obj.transform.Find("Name").GetComponent<TMPro.TMP_Text>().text = item.name;
             obj.transform.Find("Time").GetComponent<TMPro.TMP_Text>().text = item.timeStart + " - " + item.timeEnd;
             obj.transform.Find("Count").GetComponent<TMPro.TMP_Text>().text = "参会企业：" + item.count;
 
@@ -65,7 +65,7 @@ public class ConferenceUIManager : MonoBehaviour
 
     public void OnItemClick(GameObject item)
     {
-        int index = item.transform.GetSiblingIndex() - 1;
+        int index = item.transform.GetSiblingIndex();
         SceneManager.LoadScene("JobConfHall");
     }
 }

@@ -11,5 +11,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ServiceHall.unity
     guid: 7a9bab9027f279947aa72c2e45698504
+  - enabled: 0
+    path: Assets/Scenes/ExoHall.unity
+    guid: 0d1b517fffc34394882d0f2fb50f364b
+  - enabled: 1
+    path: Assets/Scenes/JobConfHall.unity
+    guid: 9c39eca509e8d5640a8a40cfcc11616c
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerOnlineTest.unity
+    guid: a6c816f7c4053444982bf57ddcb8b713
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f4687e337c6012f40a487fd66e19f2da, type: 2}
