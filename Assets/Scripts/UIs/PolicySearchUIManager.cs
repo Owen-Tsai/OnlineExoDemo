@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 [System.Serializable]
 class IPolicyInfoD
 {
+    public int id;
     public string title;
     public string region;
     public string subject;
@@ -27,13 +28,15 @@ public class PolicySearchUIManager : MonoBehaviour
     public GameObject itemPrefab;
     IPolicyListD data;
 
-    [SerializeField] string goal;
-    [SerializeField] string nationality;
-    [SerializeField] string age;
-    [SerializeField] string degree;
-    [SerializeField] string type;
-    [SerializeField] string title;
-    [SerializeField] string page;
+    string goal = "";
+    string nationality = "1";
+    string age = "0";
+    string degree = "1";
+    string type = "";
+    string title = "";
+    int page = 1;
+
+    int maxPages = 0;
 
     public GameObject[] goalOptions;
     public GameObject[] nationalityOptions;
@@ -43,7 +46,7 @@ public class PolicySearchUIManager : MonoBehaviour
 
     private int selectedGoal = 0;
     private int selectedNationality = 0;
-    private int selectedDegree = 0;
+    private int selectedDegree = 1;
     private int selectedType = 0;
     private int selectedTitle = 0;
 
@@ -52,6 +55,7 @@ public class PolicySearchUIManager : MonoBehaviour
 
     void Start()
     {
+
         StartCoroutine(FetchList());
     }
 
@@ -63,7 +67,9 @@ public class PolicySearchUIManager : MonoBehaviour
 
     public IEnumerator FetchList()
     {
-        UnityWebRequest www = UnityWebRequest.Get("http://www.jigaorencai.com:8088/api?m=PublicWebsiteApp&f=getPoliceMatch&goal=" + goal + "&nationality=" + nationality + "&age=" + age + "&degree=" + degree + "&type=" + type + "&title=" + title + "&page=1");
+        string url = "http://www.jigaorencai.com:8088/api?m=PublicWebsiteApp&f=getPoliceMatch&goal=" + goal + "&nationality=" + nationality + "&age=" + age + "&degree=" + degree + "&type=" + type + "&title=" + title + "&page=" + page;
+        Debug.Log(url);
+        UnityWebRequest www = UnityWebRequest.Get(url);
         yield return www.SendWebRequest();
 
         if (www.result != UnityWebRequest.Result.Success)
@@ -75,6 +81,8 @@ public class PolicySearchUIManager : MonoBehaviour
         string response = www.downloadHandler.text;
         Debug.Log(response);
         data = JsonUtility.FromJson<IPolicyListD>(response);
+
+        maxPages = (int)Mathf.Ceil(data.total / 5);
 
         GenerateList();
     }
@@ -97,10 +105,13 @@ public class PolicySearchUIManager : MonoBehaviour
             obj.transform.Find("Type").GetComponent<TMPro.TMP_Text>().text = "支持类型：" + item.supportType;
             obj.transform.Find("Subject").GetComponent<TMPro.TMP_Text>().text = "申报对象：" + item.subject.Replace("\r\n", "");
         }
+
+        Canvas.ForceUpdateCanvases();
     }
 
     public void OnGoalChange(string str)
     {
+        page = 1;
         string[] _params = str.Split(",");
         selectedGoal = int.Parse(_params[0]);
         goal = _params[1];
@@ -122,14 +133,15 @@ public class PolicySearchUIManager : MonoBehaviour
     }
     public void OnNationalityChange(string str)
     {
+        page = 1;
         string[] _params = str.Split(",");
-        selectedGoal = int.Parse(_params[0]);
+        selectedNationality = int.Parse(_params[0]);
         nationality = _params[1];
         StartCoroutine(FetchList());
 
         for (int i = 0; i < nationalityOptions.Length; i++)
         {
-            if (i == selectedGoal)
+            if (i == selectedNationality)
             {
                 // set active style
                 SetActiveStyle(nationalityOptions[i]);
@@ -143,14 +155,15 @@ public class PolicySearchUIManager : MonoBehaviour
     }
     public void OnEducationChange(string str)
     {
+        page = 1;
         string[] _params = str.Split(",");
-        selectedGoal = int.Parse(_params[0]);
+        selectedDegree = int.Parse(_params[0]);
         nationality = _params[1];
         StartCoroutine(FetchList());
 
         for (int i = 0; i < educationOptions.Length; i++)
         {
-            if (i == selectedGoal)
+            if (i == selectedDegree)
             {
                 // set active style
                 SetActiveStyle(educationOptions[i]);
@@ -164,14 +177,15 @@ public class PolicySearchUIManager : MonoBehaviour
     }
     public void OnTypesChange(string str)
     {
+        page = 1;
         string[] _params = str.Split(",");
-        selectedGoal = int.Parse(_params[0]);
+        selectedType = int.Parse(_params[0]);
         nationality = _params[1];
         StartCoroutine(FetchList());
 
         for (int i = 0; i < typeOptions.Length; i++)
         {
-            if (i == selectedGoal)
+            if (i == selectedType)
             {
                 // set active style
                 SetActiveStyle(typeOptions[i]);
@@ -185,14 +199,15 @@ public class PolicySearchUIManager : MonoBehaviour
     }
     public void OnTitlesChange(string str)
     {
+        page = 1;
         string[] _params = str.Split(",");
-        selectedGoal = int.Parse(_params[0]);
+        selectedTitle = int.Parse(_params[0]);
         nationality = _params[1];
         StartCoroutine(FetchList());
 
         for (int i = 0; i < titleOptions.Length; i++)
         {
-            if (i == selectedGoal)
+            if (i == selectedTitle)
             {
                 // set active style
                 SetActiveStyle(titleOptions[i]);
@@ -204,24 +219,19 @@ public class PolicySearchUIManager : MonoBehaviour
             }
         }
     }
-    public void OnAgeChange(string val)
+
+    public void OnAgeChange(int val)
     {
-        age = val;
-        StartCoroutine(FetchList());
+        Debug.Log(val);
     }
-    public void OnDegreeChange(string val)
+
+    public void OnPageChange(int val)
     {
-        degree = val;
-        StartCoroutine(FetchList());
-    }
-    public void OnTypeChange(string val)
-    {
-        type = val;
-        StartCoroutine(FetchList());
-    }
-    public void OnTitleChange(string val)
-    {
-        title = val;
+        if (page + val > maxPages || page + val < 1)
+        {
+            return;
+        }
+        page += val;
         StartCoroutine(FetchList());
     }
 
@@ -235,5 +245,12 @@ public class PolicySearchUIManager : MonoBehaviour
     {
         option.GetComponent<Image>().color = colorBg;
         option.GetComponentInChildren<TMPro.TMP_Text>().color = Color.white;
+    }
+
+    public void OnItemClick(GameObject obj)
+    {
+        int idx = obj.transform.GetSiblingIndex();
+        string url = "http://www.jigaorencai.com:8088/policy/" + data.rows[idx].id;
+        Application.OpenURL(url);
     }
 }
