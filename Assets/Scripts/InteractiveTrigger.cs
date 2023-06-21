@@ -31,6 +31,7 @@ public class InteractiveTrigger : MonoBehaviour
         if (!isInTrigger) return;
         if (Keyboard.current.fKey.wasPressedThisFrame && url.Trim() != "")
         {
+            Debug.Log("F key pressed");
             Application.OpenURL(url);
         }
         if (Keyboard.current.eKey.wasPressedThisFrame)

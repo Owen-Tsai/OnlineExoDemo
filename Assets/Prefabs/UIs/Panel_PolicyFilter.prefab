@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2435893218593557739}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.9402985
+  m_Size: 0.6632463
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7471,7 +7471,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
         m_MethodName: OnNationalityChange
         m_Mode: 5
