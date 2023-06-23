@@ -12,6 +12,37 @@ public class PlayerControllerFPS : NetworkBehaviour
 
     private float xRotation = 0f;
 
+    public Animator animator;
+    NetworkAnimator networkAnimator;
+
+    Keyboard kb;
+
+    bool isControlLocked = false;
+    private bool cameraMoved = false;
+
+    public void LockControl()
+    {
+        isControlLocked = true;
+    }
+
+    public void UnlockControl()
+    {
+        isControlLocked = false;
+    }
+
+    private bool IsWaving()
+    {
+        return (animator.GetCurrentAnimatorStateInfo(0).length >
+           animator.GetCurrentAnimatorStateInfo(0).normalizedTime)
+           && animator.GetCurrentAnimatorStateInfo(0).IsName("Waving");
+    }
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        kb = Keyboard.current;
+        networkAnimator = GetComponent<NetworkAnimator>();
+    }
+
     public override void OnStartAuthority()
     {
         _camera.gameObject.SetActive(true);
@@ -21,13 +52,30 @@ public class PlayerControllerFPS : NetworkBehaviour
     void Update()
     {
         if (!isOwned) return;
-        Look();
-        Move();
+        if (isControlLocked) return;
+        if (IsWaving())
+        {
+            if (!cameraMoved)
+            {
+                _camera.localPosition = new Vector3(0, 1.7f, -1.034f);
+                cameraMoved = true;
+            }
+        }
+        else
+        {
+            if (cameraMoved)
+            {
+                _camera.localPosition = new Vector3(0, 1.7f, 0.134f);
+                cameraMoved = false;
+            }
+            Look();
+            Move();
+            Waving();
+        }
     }
 
     private void Move()
     {
-        Keyboard kb = Keyboard.current;
         float x = 0, z = 0;
 
         if (kb.wKey.isPressed)
@@ -50,6 +98,12 @@ public class PlayerControllerFPS : NetworkBehaviour
         Vector3 movement = transform.right * x + transform.forward * z;
         // controller.Move(speedFactor * Time.deltaTime * movement);
         transform.position += movement * speedFactor * Time.deltaTime;
+
+        // set animation parameters
+        animator.SetFloat("Vertical", z * speedFactor, 0.1f, Time.deltaTime);
+        animator.SetFloat("Horizontal", x * speedFactor, 0.1f, Time.deltaTime);
+
+        animator.SetFloat("WalkSpeed", 2);
     }
 
     private void Look()
@@ -64,5 +118,14 @@ public class PlayerControllerFPS : NetworkBehaviour
         xRotation = Mathf.Clamp(xRotation, -60f, 60f);
 
         _camera.localRotation = Quaternion.Euler(xRotation, 0, 0);
+    }
+
+    private void Waving()
+    {
+        if (kb.spaceKey.wasPressedThisFrame)
+        {
+            animator.SetTrigger("Waving");
+            networkAnimator.SetTrigger("Waving");
+        }
     }
 }
