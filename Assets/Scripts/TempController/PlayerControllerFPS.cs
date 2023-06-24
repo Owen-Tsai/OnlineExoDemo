@@ -23,11 +23,15 @@ public class PlayerControllerFPS : NetworkBehaviour
     public void LockControl()
     {
         isControlLocked = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void UnlockControl()
     {
         isControlLocked = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private bool IsWaving()
@@ -41,6 +45,7 @@ public class PlayerControllerFPS : NetworkBehaviour
         animator = GetComponent<Animator>();
         kb = Keyboard.current;
         networkAnimator = GetComponent<NetworkAnimator>();
+        UnlockControl();
     }
 
     public override void OnStartAuthority()

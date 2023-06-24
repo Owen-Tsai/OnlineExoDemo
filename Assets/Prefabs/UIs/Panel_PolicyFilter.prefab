@@ -172,8 +172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000005722, y: 0.00020776405}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000005722, y: 0.00021362305}
+  m_SizeDelta: {x: 0, y: 231.4825}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4510045512358078254
 MonoBehaviour:
@@ -509,7 +509,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
         m_MethodName: OnTypesChange
         m_Mode: 5
@@ -556,9 +556,9 @@ RectTransform:
   m_Father: {fileID: 4930803441493370628}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 141, y: -48}
   m_SizeDelta: {x: 250, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5877469751660776414
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
         m_MethodName: OnNationalityChange
         m_Mode: 5
@@ -842,8 +842,8 @@ RectTransform:
   m_Father: {fileID: 7527052933857772611}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.05970162}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1031,6 +1031,7 @@ GameObject:
   - component: {fileID: 2898049420388794261}
   - component: {fileID: 3055415182348146928}
   - component: {fileID: 8039836518859085609}
+  - component: {fileID: 4432716646220703267}
   m_Layer: 5
   m_Name: Option
   m_TagString: Untagged
@@ -1097,6 +1098,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4432716646220703267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518504502133309298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 67273364558957118}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7174270120814147836}
+        m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
+        m_MethodName: OnGoalChange
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 2,2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &782311485384035309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,7 +1811,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
         m_MethodName: OnEducationChange
         m_Mode: 5
@@ -1888,7 +1945,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
         m_MethodName: OnEducationChange
         m_Mode: 5
@@ -2203,9 +2260,9 @@ RectTransform:
   m_Father: {fileID: 4930803441493370628}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 141, y: -488}
   m_SizeDelta: {x: 250, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8903742625293593331
@@ -2368,9 +2425,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6051540964348212585}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnTitlesChange
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2502,7 +2559,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2435893218593557739}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6632463
+  m_Size: 0.9402985
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2678,9 +2735,9 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -14, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4256058766402127891
 CanvasRenderer:
@@ -3125,7 +3182,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
         m_MethodName: OnEducationChange
         m_Mode: 5
@@ -3259,9 +3316,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6051540964348212585}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnTitlesChange
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3606,7 +3663,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
         m_MethodName: OnTypesChange
         m_Mode: 5
@@ -4004,9 +4061,9 @@ RectTransform:
   m_Father: {fileID: 1725095787700323835}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 313.36484, y: -199.4825}
   m_SizeDelta: {x: 594.7297, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1564200904423586666
@@ -4242,10 +4299,10 @@ RectTransform:
   m_Father: {fileID: 1725095787700323835}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 16, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 16, y: -16}
+  m_SizeDelta: {x: 597.8442, y: 159.4825}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2902978741211579371
 MonoBehaviour:
@@ -4260,9 +4317,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 16
-    m_Right: 16
-    m_Top: 16
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
     m_Bottom: 16
   m_ChildAlignment: 0
   m_Spacing: 8
@@ -4359,9 +4416,9 @@ RectTransform:
   m_Father: {fileID: 4930803441493370628}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 141, y: -400}
   m_SizeDelta: {x: 250, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2213070196493056248
@@ -4624,6 +4681,7 @@ GameObject:
   - component: {fileID: 1317616883478335741}
   - component: {fileID: 5888650019826597384}
   - component: {fileID: 2637415632465518276}
+  - component: {fileID: 1632619817043612890}
   m_Layer: 5
   m_Name: Option (2)
   m_TagString: Untagged
@@ -4690,6 +4748,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1632619817043612890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414784156294643263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 67273364558957118}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7174270120814147836}
+        m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
+        m_MethodName: OnGoalChange
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 3,3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5648713319299786569
 GameObject:
   m_ObjectHideFlags: 0
@@ -4897,9 +5011,9 @@ RectTransform:
   m_Father: {fileID: 7022020101450840772}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 438.04727, y: -16}
   m_SizeDelta: {x: 66.6939, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4721914839386075881
@@ -5123,7 +5237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4764784940717827008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5517,9 +5631,9 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1234965982353834926
 CanvasRenderer:
@@ -5583,6 +5697,7 @@ GameObject:
   - component: {fileID: 4676727676705635899}
   - component: {fileID: 3160094356692115359}
   - component: {fileID: 67273364558957118}
+  - component: {fileID: 4508486568545691906}
   m_Layer: 5
   m_Name: Option
   m_TagString: Untagged
@@ -5649,6 +5764,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4508486568545691906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6171807632929287611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 67273364558957118}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7174270120814147836}
+        m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
+        m_MethodName: OnGoalChange
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 0,
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6240405182788116385
 GameObject:
   m_ObjectHideFlags: 0
@@ -5819,9 +5990,9 @@ RectTransform:
   m_Father: {fileID: 7022020101450840772}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 156.68242, y: -16}
   m_SizeDelta: {x: 66.6939, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5165008975362242919
@@ -6040,9 +6211,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6051540964348212585}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnTitlesChange
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6221,7 +6392,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6433,9 +6604,9 @@ RectTransform:
   m_Father: {fileID: 4930803441493370628}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 141, y: -312}
   m_SizeDelta: {x: 250, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3046900554889904134
@@ -6857,9 +7028,9 @@ RectTransform:
   m_Father: {fileID: 4930803441493370628}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 141, y: -224}
   m_SizeDelta: {x: 250, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9214542726138543881
@@ -7022,7 +7193,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
         m_MethodName: OnTypesChange
         m_Mode: 5
@@ -7605,7 +7776,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7174270120814147836}
         m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
         m_MethodName: OnEducationChange
         m_Mode: 5
@@ -7941,8 +8112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.0063335644, y: 1}
-  m_AnchoredPosition: {x: 0.0036845, y: 0}
-  m_SizeDelta: {x: 279.61, y: 0}
+  m_AnchoredPosition: {x: 0.0036845, y: -0.000091552734}
+  m_SizeDelta: {x: 279.61, y: 32}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6938873547517264430
 MonoBehaviour:
@@ -8019,9 +8190,9 @@ RectTransform:
   m_Father: {fileID: 4930803441493370628}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 141, y: -136}
   m_SizeDelta: {x: 250, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2867269748565338538
@@ -8073,6 +8244,7 @@ GameObject:
   - component: {fileID: 7737034935979953237}
   - component: {fileID: 3657276140531714055}
   - component: {fileID: 6724428691911373366}
+  - component: {fileID: 7760332229843261505}
   m_Layer: 5
   m_Name: Option (1)
   m_TagString: Untagged
@@ -8139,6 +8311,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7760332229843261505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8057626188135425524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 67273364558957118}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7174270120814147836}
+        m_TargetAssemblyTypeName: PolicySearchUIManager, Assembly-CSharp
+        m_MethodName: OnGoalChange
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 2,2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8477590095981719022
 GameObject:
   m_ObjectHideFlags: 0
@@ -9165,7 +9393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3062652839052897927, guid: a6932e9c4d1ef0b4796761ad3d53d031, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3062652839052897927, guid: a6932e9c4d1ef0b4796761ad3d53d031, type: 3}
       propertyPath: m_AnchorMin.x
@@ -9173,11 +9401,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3062652839052897927, guid: a6932e9c4d1ef0b4796761ad3d53d031, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3062652839052897927, guid: a6932e9c4d1ef0b4796761ad3d53d031, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 576.5823
+      value: 597.8442
       objectReference: {fileID: 0}
     - target: {fileID: 3062652839052897927, guid: a6932e9c4d1ef0b4796761ad3d53d031, type: 3}
       propertyPath: m_SizeDelta.y
@@ -9213,11 +9441,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3062652839052897927, guid: a6932e9c4d1ef0b4796761ad3d53d031, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 298.9221
       objectReference: {fileID: 0}
     - target: {fileID: 3062652839052897927, guid: a6932e9c4d1ef0b4796761ad3d53d031, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -71.74125
       objectReference: {fileID: 0}
     - target: {fileID: 3062652839052897927, guid: a6932e9c4d1ef0b4796761ad3d53d031, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
