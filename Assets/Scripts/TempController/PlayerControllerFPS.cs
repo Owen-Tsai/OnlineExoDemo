@@ -10,6 +10,7 @@ public class PlayerControllerFPS : NetworkBehaviour
     public float speedFactor = 0.05f;
     public float mouseEnsitivity = 0.08f;
     public Transform _camera;
+    Camera cameraComp;
 
     private float xRotation = 0f;
 
@@ -21,6 +22,8 @@ public class PlayerControllerFPS : NetworkBehaviour
 
     bool isControlLocked = false;
     private bool cameraMoved = false;
+
+    private float zoomVelCam;
 
     public void LockControl()
     {
@@ -52,6 +55,7 @@ public class PlayerControllerFPS : NetworkBehaviour
         kb = Keyboard.current;
         mouse = Mouse.current;
         networkAnimator = GetComponent<NetworkAnimator>();
+        cameraComp =  _camera.GetComponent<Camera>();
         UnlockControl();
     }
 
@@ -84,15 +88,7 @@ public class PlayerControllerFPS : NetworkBehaviour
             Look();
             Move();
             Waving();
-
-            if (mouse.rightButton.wasPressedThisFrame)
-            {
-                SetCameraZoom(40, 0);
-            }
-            if (mouse.rightButton.wasReleasedThisFrame)
-            {
-                SetCameraZoom(60, 0);
-            }
+            SetCameraZoom();
         }
     }
 
@@ -150,15 +146,15 @@ public class PlayerControllerFPS : NetworkBehaviour
         }
     }
 
-    private void SetCameraZoom(float fov, float t)
+    private void SetCameraZoom()
     {
-        if (t > 1f) return;
-        Camera c = _camera.GetComponent<Camera>();
-        float currentFov = c.fieldOfView;
-
-        c.fieldOfView = Mathf.Lerp(currentFov, fov, t);
-        t += 0.1f;
-
-        SetCameraZoom(fov, t);
+        if (mouse.rightButton.isPressed)
+        {
+            cameraComp.fieldOfView = Mathf.SmoothDamp(cameraComp.fieldOfView, 40, ref zoomVelCam, 10 * Time.deltaTime);
+        }
+        if (!mouse.rightButton.isPressed)
+        {
+            cameraComp.fieldOfView = Mathf.SmoothDamp(cameraComp.fieldOfView, 60, ref zoomVelCam, 10 * Time.deltaTime);
+        }
     }
 }
