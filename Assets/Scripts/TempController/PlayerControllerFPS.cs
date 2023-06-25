@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Mirror;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerControllerFPS : NetworkBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerControllerFPS : NetworkBehaviour
     NetworkAnimator networkAnimator;
 
     Keyboard kb;
+    Mouse mouse;
 
     bool isControlLocked = false;
     private bool cameraMoved = false;
@@ -25,6 +27,8 @@ public class PlayerControllerFPS : NetworkBehaviour
         isControlLocked = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        var volume = _camera.GetComponent<PostProcessVolume>();
+        volume.profile.GetSetting<Blur>().enabled.value = true;
     }
 
     public void UnlockControl()
@@ -32,6 +36,8 @@ public class PlayerControllerFPS : NetworkBehaviour
         isControlLocked = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        var volume = _camera.GetComponent<PostProcessVolume>();
+        volume.profile.GetSetting<Blur>().enabled.value = false;
     }
 
     private bool IsWaving()
@@ -44,6 +50,7 @@ public class PlayerControllerFPS : NetworkBehaviour
     {
         animator = GetComponent<Animator>();
         kb = Keyboard.current;
+        mouse = Mouse.current;
         networkAnimator = GetComponent<NetworkAnimator>();
         UnlockControl();
     }
@@ -63,6 +70,7 @@ public class PlayerControllerFPS : NetworkBehaviour
             if (!cameraMoved)
             {
                 _camera.localPosition = new Vector3(0, 1.7f, -1.034f);
+                _camera.localRotation = Quaternion.Euler(Vector3.zero);
                 cameraMoved = true;
             }
         }
@@ -76,6 +84,15 @@ public class PlayerControllerFPS : NetworkBehaviour
             Look();
             Move();
             Waving();
+
+            if (mouse.rightButton.wasPressedThisFrame)
+            {
+                SetCameraZoom(40, 0);
+            }
+            if (mouse.rightButton.wasReleasedThisFrame)
+            {
+                SetCameraZoom(60, 0);
+            }
         }
     }
 
@@ -113,7 +130,6 @@ public class PlayerControllerFPS : NetworkBehaviour
 
     private void Look()
     {
-        Mouse mouse = Mouse.current;
         float mouseX = mouse.delta.x.value * mouseEnsitivity * Time.deltaTime;
         float mouseY = mouse.delta.y.value * mouseEnsitivity * Time.deltaTime;
 
@@ -132,5 +148,17 @@ public class PlayerControllerFPS : NetworkBehaviour
             animator.SetTrigger("Waving");
             networkAnimator.SetTrigger("Waving");
         }
+    }
+
+    private void SetCameraZoom(float fov, float t)
+    {
+        if (t > 1f) return;
+        Camera c = _camera.GetComponent<Camera>();
+        float currentFov = c.fieldOfView;
+
+        c.fieldOfView = Mathf.Lerp(currentFov, fov, t);
+        t += 0.1f;
+
+        SetCameraZoom(fov, t);
     }
 }
