@@ -26,9 +26,8 @@ public class NetworkedInteractiveTrigger : NetworkBehaviour
         isInTrigger = false;
     }*/
 
-    public override void OnStartClient()
+    private void Start ()
     {
-        controller = NetworkClient.localPlayer.gameObject.GetComponent<PlayerControllerFPS>();
         isInTrigger = false;
     }
 
@@ -49,13 +48,13 @@ public class NetworkedInteractiveTrigger : NetworkBehaviour
     {
         panelToShow.SetActive(true);
         actionHintPanel.SetActive(false);
-        controller.LockControl();
+        NetworkClient.localPlayer.gameObject.GetComponent<PlayerControllerFPS>().LockControl();
     }
 
     public void HidePanel()
     {
         panelToShow.SetActive(false);
-        controller.UnlockControl();
+        NetworkClient.localPlayer.gameObject.GetComponent<PlayerControllerFPS>().UnlockControl();
         if (isInTrigger)
         {
             actionHintPanel.SetActive(true);
@@ -64,7 +63,7 @@ public class NetworkedInteractiveTrigger : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Collider>().tag == "Player")
+        if (other.GetComponent<Collider>().tag == "Player" && other.gameObject == NetworkClient.localPlayer.gameObject)
         {
             actionHintPanel.SetActive(true);
             isInTrigger = true;
@@ -73,7 +72,7 @@ public class NetworkedInteractiveTrigger : NetworkBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Collider>().tag == "Player")
+        if (other.GetComponent<Collider>().tag == "Player" && other.gameObject == NetworkClient.localPlayer.gameObject)
         {
             actionHintPanel.SetActive(false);
             isInTrigger = false;
