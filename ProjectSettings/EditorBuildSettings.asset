@@ -20,10 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MultiplayerOnlineTest.unity
     guid: a6c816f7c4053444982bf57ddcb8b713
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Release0.2/02ConferenceHall.unity
     guid: 2ac6fecfb30c1ce42932c8174617cdc3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Release0.2/01ServiceHall.unity
     guid: 68056bdda4652aa43b8b6e0c7088a8f8
   m_configObjects:
