@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Release0.2/01ServiceHall.unity
     guid: 68056bdda4652aa43b8b6e0c7088a8f8
+  - enabled: 1
+    path: Assets/Scenes/Test_Chat.unity
+    guid: 7e75dad21ca5d284e98f5dd7969ff257
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f4687e337c6012f40a487fd66e19f2da, type: 2}
