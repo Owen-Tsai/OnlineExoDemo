@@ -54,7 +54,6 @@ public class LevelManager : NetworkManager
 
     private void OnCreatePlayer(NetworkConnectionToClient conn, CharacterMessage message)
     {
-        Debug.Log("player create message received");
         playerPrefab = playerPrefabs[message.prefabIndex];
         GameObject obj = Instantiate(playerPrefabs[message.prefabIndex], spawnPos);
         // obj.GetComponent<ChatTestController>().displayName = message.displayName;

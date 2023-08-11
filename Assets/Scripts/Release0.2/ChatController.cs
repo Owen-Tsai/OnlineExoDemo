@@ -1,0 +1,93 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using Mirror;
+using System;
+
+public class ChatController : NetworkBehaviour
+{
+    [SerializeField] GameObject chatPanel;
+    [SerializeField] TMPro.TMP_InputField chatInput;
+    [SerializeField] TMPro.TMP_Text chatText;
+    Keyboard kb;
+    string displayName;
+
+    bool isChatPanelActivated = false;
+
+    private static event Action<string> OnMessage;
+
+    void Start()
+    {
+        kb = Keyboard.current;
+        displayName = PlayerAuthData.DisplayName;
+        chatPanel = GameObject.Find("Panel_Chat");
+        chatInput = chatPanel.transform.Find("ChatInput").GetComponent<TMPro.TMP_InputField>();
+        chatText = GameObject.Find("ChatText").GetComponent<TMPro.TMP_Text>();
+
+        chatPanel.SetActive(false);
+        chatInput.onEndEdit.AddListener(delegate { Send(chatInput.text); });
+    }
+
+    public override void OnStartAuthority()
+    {
+        OnMessage += HandleMessage;
+    }
+
+    [ClientCallback]
+    private void OnDestroy()
+    {
+        if (!isOwned) return;
+        OnMessage -= HandleMessage;
+    }
+
+    private void HandleMessage(string message)
+    {
+        chatText.text += message;
+    }
+
+    [Client]
+    public void Send(string message)
+    {
+        Debug.Log("called send");
+        if (string.IsNullOrWhiteSpace(message))
+        {
+            return;
+        }
+        Debug.Log("sending: " + chatInput.text);
+        CmdSendMessage(chatInput.text);
+        chatInput.text = string.Empty;
+    }
+
+    [Command]
+    public void CmdSendMessage(string message)
+    {
+        RpcHandleMessage($"[{displayName}]: {message}");
+    }
+
+    [ClientRpc]
+    public void RpcHandleMessage(string message)
+    {
+        OnMessage?.Invoke($"\n{message}");
+    }
+
+
+    void Update()
+    {
+        if (!isOwned) return;
+        if (kb.slashKey.wasPressedThisFrame && !isChatPanelActivated)
+        {
+            chatPanel.SetActive(true);
+            isChatPanelActivated = true;
+            NetworkClient.localPlayer.gameObject.GetComponent<PlayerControllerFPS>().LockControl();
+        }
+
+        if (kb.escapeKey.wasPressedThisFrame && isChatPanelActivated) 
+        {
+            chatPanel.SetActive(false);
+            isChatPanelActivated = false;
+            NetworkClient.localPlayer.gameObject.GetComponent<PlayerControllerFPS>().UnlockControl();
+        }
+    }
+}
