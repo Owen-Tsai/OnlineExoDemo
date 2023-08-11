@@ -42,6 +42,7 @@ namespace Cai.Lobby
 
         private void OnCreatePlayer(NetworkConnectionToClient conn, CreatePlayerMessage message)
         {
+            Debug.Log("on create player");
             GameObject obj = Instantiate(playerPrefab, spawnPos);
             obj.GetComponent<ChatTestController>().displayName = message.displayName;
 

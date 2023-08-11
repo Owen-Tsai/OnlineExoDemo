@@ -16,7 +16,6 @@ namespace Cai.Lobby
         [SerializeField] TMPro.TMP_InputField sessionInput;
         [SerializeField] Button continueButton;
 
-        [SerializeField] GameObject[] PlayerPrefabsList;
         public static string DisplayName { get; private set; }
 
         // Start is called before the first frame update
@@ -33,6 +32,7 @@ namespace Cai.Lobby
                 avatarIdx = avatarList.Length - 1;
             }
             avatarPreviewImage.sprite = avatarList[avatarIdx];
+            PlayerAuthData.playerPrefabIndex = avatarIdx;
         }
 
         public void NextAvatar()
@@ -43,6 +43,7 @@ namespace Cai.Lobby
                 avatarIdx = 0;
             }
             avatarPreviewImage.sprite = avatarList[avatarIdx];
+            PlayerAuthData.playerPrefabIndex = avatarIdx;
         }
 
         private bool IsFormValid()
@@ -60,7 +61,8 @@ namespace Cai.Lobby
 
         public void StartGame()
         {
-            SceneManager.LoadScene("Test_Chat");
+            SceneManager.LoadScene("01ServiceHall");
+            //SceneManager.LoadScene("Test_Chat");
         }
     }
 }
