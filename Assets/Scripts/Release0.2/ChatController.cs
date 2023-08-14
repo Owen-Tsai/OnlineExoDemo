@@ -12,26 +12,22 @@ public class ChatController : NetworkBehaviour
     [SerializeField] TMPro.TMP_InputField chatInput;
     [SerializeField] TMPro.TMP_Text chatText;
     Keyboard kb;
-    string displayName;
+    public string displayName;
 
     bool isChatPanelActivated = false;
 
     private static event Action<string> OnMessage;
 
-    void Start()
+    public override void OnStartAuthority()
     {
         kb = Keyboard.current;
-        displayName = PlayerAuthData.DisplayName;
         chatPanel = GameObject.Find("Panel_Chat");
         chatInput = chatPanel.transform.Find("ChatInput").GetComponent<TMPro.TMP_InputField>();
         chatText = GameObject.Find("ChatText").GetComponent<TMPro.TMP_Text>();
 
         chatPanel.SetActive(false);
         chatInput.onEndEdit.AddListener(delegate { Send(chatInput.text); });
-    }
 
-    public override void OnStartAuthority()
-    {
         OnMessage += HandleMessage;
     }
 
@@ -58,6 +54,8 @@ public class ChatController : NetworkBehaviour
         Debug.Log("sending: " + chatInput.text);
         CmdSendMessage(chatInput.text);
         chatInput.text = string.Empty;
+        chatInput.Select();
+        chatInput.Select();
     }
 
     [Command]
@@ -81,6 +79,7 @@ public class ChatController : NetworkBehaviour
             chatPanel.SetActive(true);
             isChatPanelActivated = true;
             NetworkClient.localPlayer.gameObject.GetComponent<PlayerControllerFPS>().LockControl();
+            chatInput.Select();
         }
 
         if (kb.escapeKey.wasPressedThisFrame && isChatPanelActivated) 
