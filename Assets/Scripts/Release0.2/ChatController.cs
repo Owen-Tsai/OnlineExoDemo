@@ -11,6 +11,7 @@ public class ChatController : NetworkBehaviour
     [SerializeField] GameObject chatPanel;
     [SerializeField] TMPro.TMP_InputField chatInput;
     [SerializeField] TMPro.TMP_Text chatText;
+    [SerializeField] ScrollRect scrollViewContent;
     Keyboard kb;
     public string displayName;
 
@@ -24,6 +25,7 @@ public class ChatController : NetworkBehaviour
         chatPanel = GameObject.Find("Panel_Chat");
         chatInput = chatPanel.transform.Find("ChatInput").GetComponent<TMPro.TMP_InputField>();
         chatText = GameObject.Find("ChatText").GetComponent<TMPro.TMP_Text>();
+        scrollViewContent = GameObject.Find("Scroll View").GetComponent<ScrollRect>();
 
         chatPanel.SetActive(false);
         chatInput.onEndEdit.AddListener(delegate { Send(chatInput.text); });
@@ -46,12 +48,10 @@ public class ChatController : NetworkBehaviour
     [Client]
     public void Send(string message)
     {
-        Debug.Log("called send");
         if (string.IsNullOrWhiteSpace(message))
         {
             return;
         }
-        Debug.Log("sending: " + chatInput.text);
         CmdSendMessage(chatInput.text);
         chatInput.text = string.Empty;
         chatInput.Select();
@@ -68,6 +68,9 @@ public class ChatController : NetworkBehaviour
     public void RpcHandleMessage(string message)
     {
         OnMessage?.Invoke($"\n{message}");
+        Canvas.ForceUpdateCanvases();
+        scrollViewContent.verticalNormalizedPosition = 0;
+        Canvas.ForceUpdateCanvases();
     }
 
 

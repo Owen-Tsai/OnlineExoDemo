@@ -2589,6 +2589,7 @@ GameObject:
   - component: {fileID: 7614241256713253130}
   - component: {fileID: 6062973460513119233}
   - component: {fileID: 7780491464269395728}
+  - component: {fileID: 4261265550475277061}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2670,6 +2671,23 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252871175542196554}
   m_Enabled: 1
+--- !u!114 &4261265550475277061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252871175542196554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 8ffe44439e645bc43bc0eb7947781c80, type: 2}
+  isGlobal: 0
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &1292343085384235116
 GameObject:
   m_ObjectHideFlags: 0
@@ -18229,6 +18247,7 @@ GameObject:
   - component: {fileID: 5904250350342079536}
   - component: {fileID: 3233546419038231414}
   - component: {fileID: 2008785388400764489}
+  - component: {fileID: 4160227278132802406}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Player
@@ -18412,6 +18431,25 @@ MonoBehaviour:
   syncInterval: 0
   clientAuthority: 1
   animator: {fileID: 533527648131386287}
+--- !u!114 &4160227278132802406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036048946422861330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3318e280567d41bbacaa699ac7fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  chatPanel: {fileID: 0}
+  chatInput: {fileID: 0}
+  chatText: {fileID: 0}
+  displayName: 
 --- !u!1 &9067131802934851837
 GameObject:
   m_ObjectHideFlags: 0
