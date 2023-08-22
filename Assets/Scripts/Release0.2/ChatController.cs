@@ -19,9 +19,13 @@ public class ChatController : NetworkBehaviour
 
     private static event Action<string> OnMessage;
 
-    public override void OnStartAuthority()
+    public void Start()
     {
         kb = Keyboard.current;
+    }
+
+    public override void OnStartAuthority()
+    {
         chatPanel = GameObject.Find("Panel_Chat");
         chatInput = chatPanel.transform.Find("ChatInput").GetComponent<TMPro.TMP_InputField>();
         chatText = GameObject.Find("ChatText").GetComponent<TMPro.TMP_Text>();
@@ -69,7 +73,10 @@ public class ChatController : NetworkBehaviour
     {
         OnMessage?.Invoke($"\n{message}");
         Canvas.ForceUpdateCanvases();
-        scrollViewContent.verticalNormalizedPosition = 0;
+        if (scrollViewContent)
+        {
+            scrollViewContent.verticalNormalizedPosition = 0;
+        }
         Canvas.ForceUpdateCanvases();
     }
 
