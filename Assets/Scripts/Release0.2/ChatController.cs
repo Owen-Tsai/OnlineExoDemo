@@ -71,7 +71,7 @@ public class ChatController : NetworkBehaviour
     [ClientRpc]
     public void RpcHandleMessage(string message)
     {
-        OnMessage?.Invoke($"\n{message}");
+        OnMessage?.Invoke($"{message}\n");
         Canvas.ForceUpdateCanvases();
         if (scrollViewContent)
         {
