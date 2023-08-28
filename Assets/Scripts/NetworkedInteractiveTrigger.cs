@@ -20,13 +20,7 @@ public class NetworkedInteractiveTrigger : NetworkBehaviour
     private bool isInTrigger;
     private PlayerControllerFPS controller;
 
-    /*public override void OnStartAuthority()
-    {
-        controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerFPS>();
-        isInTrigger = false;
-    }*/
-
-    private void Start ()
+    public override void OnStartAuthority()
     {
         isInTrigger = false;
     }
@@ -61,9 +55,15 @@ public class NetworkedInteractiveTrigger : NetworkBehaviour
         }
     }
 
+    private bool IsOwned(GameObject other)
+    {
+        return other.GetComponent<NetworkIdentity>().isOwned;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Collider>().tag == "Player" && other.gameObject == NetworkClient.localPlayer.gameObject)
+        Debug.Log(other);
+        if (other.gameObject.CompareTag("Player") && IsOwned(other.gameObject))
         {
             actionHintPanel.SetActive(true);
             isInTrigger = true;
@@ -72,7 +72,8 @@ public class NetworkedInteractiveTrigger : NetworkBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Collider>().tag == "Player" && other.gameObject == NetworkClient.localPlayer.gameObject)
+        Debug.Log(other);
+        if (other.gameObject.CompareTag("Player") && IsOwned(other.gameObject))
         {
             actionHintPanel.SetActive(false);
             isInTrigger = false;
