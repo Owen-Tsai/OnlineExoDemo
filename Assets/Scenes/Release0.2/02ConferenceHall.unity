@@ -2323,6 +2323,7 @@ GameObject:
   - component: {fileID: 474787191}
   - component: {fileID: 474787190}
   - component: {fileID: 474787194}
+  - component: {fileID: 474787195}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2360,12 +2361,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.0182517, z: 22.330627}
+  m_Center: {x: 0, y: -0.009127875, z: 10.665314}
 --- !u!23 &474787191
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2452,6 +2453,20 @@ VideoPlayer:
   m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &474787195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474787188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d146f7e6737ea4e47b084ca61a6fe0a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopWhenExit: 0
+  videoPlayer: {fileID: 0}
 --- !u!1 &476286864
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,6 +4154,7 @@ GameObject:
   - component: {fileID: 694610165}
   - component: {fileID: 694610164}
   - component: {fileID: 694610167}
+  - component: {fileID: 694610168}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -4176,12 +4192,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 16.437496}
+  m_Center: {x: 0, y: 0, z: 7.718748}
 --- !u!23 &694610165
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4268,6 +4284,20 @@ VideoPlayer:
   m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &694610168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694610162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d146f7e6737ea4e47b084ca61a6fe0a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopWhenExit: 0
+  videoPlayer: {fileID: 0}
 --- !u!1001 &716111810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6457,6 +6487,10 @@ PrefabInstance:
     - target: {fileID: 3591423235649198623, guid: bfcf44ee835937e4d9dcf8bafdcfce7d, type: 3}
       propertyPath: m_SizeDelta.y
       value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591423235649198623, guid: bfcf44ee835937e4d9dcf8bafdcfce7d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 5625326789202935600, guid: bfcf44ee835937e4d9dcf8bafdcfce7d, type: 3}
       propertyPath: m_AnchorMax.y

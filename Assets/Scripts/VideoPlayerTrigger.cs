@@ -14,12 +14,13 @@ public class VideoPlayerTrigger : MonoBehaviour
 
     private void Start()
     {
-        videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer = gameObject.GetComponent<VideoPlayer>();
+        StopVideo();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Collider>().tag == "Player")
+        if (other.GetComponent<Collider>().CompareTag("Player"))
         {
             PlayVideo();
         }
@@ -27,7 +28,7 @@ public class VideoPlayerTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Collider>().tag == "Player")
+        if (other.GetComponent<Collider>().CompareTag("Player"))
         {
             if (stopWhenExit)
             {
