@@ -28,7 +28,7 @@ namespace Cai.UI.Networked {
                 && IsOwned(other.gameObject)
                 && !hasShown
             ) {
-                // hasShown = true;
+                hasShown = true;
                 uiElement.SetActive(true);
                 NetworkClient.localPlayer.GetComponent<PlayerControllerFPS>().LockControl();
             }
@@ -36,6 +36,7 @@ namespace Cai.UI.Networked {
 
         private void OnTriggerExit(Collider other) {
             if (other.gameObject.CompareTag("Player") && IsOwned(other.gameObject)) {
+                Debug.Log("Exit Trigger");
                 uiElement.SetActive(false);
                 NetworkClient.localPlayer.GetComponent<PlayerControllerFPS>().UnlockControl();
             }
